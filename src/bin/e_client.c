@@ -528,6 +528,11 @@ _e_client_free(E_Client *ec)
 
    e_hints_client_list_set();
    evas_object_del(ec->frame);
+
+#ifdef HAVE_WAYLAND_CLIENTS
+   e_uuid_store_entry_del(ec->uuid);
+#endif
+
    free(ec);
 }
 
