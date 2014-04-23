@@ -367,6 +367,10 @@ e_remember_default_match_set(E_Remember *rem, E_Client *ec)
 EAPI void
 e_remember_update(E_Client *ec)
 {
+#ifdef HAVE_WAYLAND_CLIENTS
+   /* Abuse this as e_remeber_update is called in all the right places already */
+   e_uuid_store_entry_update(ec->uuid, ec);
+#endif
    if (ec->new_client) return;
    if (!ec->remember) return;
    if (ec->remember->keep_settings) return;
