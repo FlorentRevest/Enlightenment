@@ -272,7 +272,7 @@ Xephyr :1 -nolisten tcp -noreset -ac -br -dpi $DPI -screen $SCREEN $HOST_CURSOR 
 sleep 1
 export DISPLAY=:1
 [ ! -z "$TEST_HOME" ] && export HOME="$TEST_HOME"
-enlightenment_start \
+EINA_LOG_LEVELS=e:5 enlightenment_start \
     -i-really-know-what-i-am-doing-and-accept-full-responsibility-for-it \
     -profile $PROFILE \
 	$E_OPTIONS $xinerama_auto_args \
