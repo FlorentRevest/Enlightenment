@@ -36,6 +36,7 @@ struct _E_Pixmap
    struct wl_listener buffer_destroy_listener;
    void *data;
    Eina_Rectangle opaque;
+   uuid_t uuid;
 #endif
 
    Eina_Bool usable : 1;
@@ -243,6 +244,7 @@ e_pixmap_new(E_Pixmap_Type type, ...)
         cp = _e_pixmap_new(type);
         cp->win = id;
         eina_hash_add(pixmaps[type], &id, cp);
+        uuid_generate(cp->uuid);
 #endif
         break;
      }
