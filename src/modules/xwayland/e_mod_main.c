@@ -252,6 +252,7 @@ static Eina_Bool
 _cb_signal_event(void *data EINA_UNUSED, int type EINA_UNUSED, void *event)
 {
    Ecore_Event_Signal_User *ev;
+   char buf[128];
 
    ev = event;
    if (ev->number != 1) return ECORE_CALLBACK_RENEW;
@@ -260,13 +261,8 @@ _cb_signal_event(void *data EINA_UNUSED, int type EINA_UNUSED, void *event)
     * initialized. */
 
    DBG("XWayland Finished Init");
-
-   /* TODO: create "window manager" process */
-
-   /* TODO: NB: 
-    * 
-    * Weston creates a smaller window manager process here.
-    * We Maybe able to just do e_comp_x_init, but will have to test that */
+   snprintf(buf, sizeof(buf), ":%d", exs->disp);
+   assert(ecore_x_init(buf));
 
    return ECORE_CALLBACK_CANCEL;
 }
