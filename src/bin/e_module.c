@@ -953,6 +953,7 @@ _e_module_whitelist_check(void)
       "wl_x11",
       "wl_wl",
       "wl_drm",
+      "wl_eglfs",
       "wl_screenshot",
       "wl_shell",
       "wl_desktop_shell",
